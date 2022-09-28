@@ -11,7 +11,9 @@ public class Controller {
     private Recipe recipe;
     @GetMapping("/api/recipe")
     public Recipe getRecipe() {
-        return recipe;
+        return recipe
+
+                ;
     }
 
     @PostMapping("/api/recipe")
