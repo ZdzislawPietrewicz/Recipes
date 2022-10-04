@@ -6,7 +6,7 @@ import recipes.model.Recipe;
 import recipes.persistance.RecipeRepository;
 
 @Configuration
-public class Service {
+public class RecipeService {
     @Autowired
     RecipeRepository recipeRepository;
 
