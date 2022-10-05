@@ -16,15 +16,17 @@ public class Recipe {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long id;
 
-    @Column(nullable = false)
+    @NotBlank
     private String name;
 
     @NotBlank
     private String description;
 
+    @NotEmpty
     @Size(min = 1)
     private String [] ingredients;
 
+    @NotEmpty
     @Size(min = 1)
     private String [] directions;
 
