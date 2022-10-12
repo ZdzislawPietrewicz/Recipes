@@ -13,4 +13,9 @@ public class ControllerExceptionHandler {
         CustomErrorMessage customErrorMessage = new CustomErrorMessage(e.getMessage());
         return new ResponseEntity<>(customErrorMessage, HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(SearchParamNotValid.class)
+    public ResponseEntity<CustomErrorMessage>handleSearchParamNotVAlid(SearchParamNotValid e, WebRequest webRequest) {
+        CustomErrorMessage customErrorMessage = new CustomErrorMessage(e.getMessage());
+        return new ResponseEntity<>(customErrorMessage, HttpStatus.BAD_REQUEST);
+    }
 }
