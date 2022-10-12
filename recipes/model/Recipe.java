@@ -2,9 +2,12 @@ package recipes.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -22,12 +25,20 @@ public class Recipe {
     @NotBlank
     private String description;
 
-    @NotEmpty
-    @Size(min = 1)
-    private String [] ingredients;
+    @NotBlank
+    private String category;
+
+    @UpdateTimestamp
+    private LocalDateTime date;
 
     @NotEmpty
-    @Size(min = 1)
-    private String [] directions;
+    @ElementCollection
+    @CollectionTable(name = "INGREDIENTS", joinColumns = @JoinColumn(name = "recipe_id"))
+    private List<String> ingredients;
+
+    @NotEmpty
+    @ElementCollection
+    @CollectionTable(name = "DIRECTIONS", joinColumns = @JoinColumn(name = "recipe_id"))
+    private List<String> directions;
 
 }
